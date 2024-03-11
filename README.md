@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+*AI generated readme
 
-## Getting Started
+# Fox or Onion
 
-First, run the development server:
+![Fox or Onion Logo](path/to/logo.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fox or Onion is a web application that challenges users to determine whether a given headline is from Fox News or The Onion, a satirical news publication. The app provides a fun and interactive way to test your news literacy skills and differentiate between real news and satire.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Randomly generated headlines from Fox News and The Onion
+- User-friendly interface for selecting the source of each headline
+- Real-time feedback on the correctness of the user's selection
+- Score tracking to keep track of the user's performance
+- Leaderboard to showcase top scores
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributions are welcome
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the [MIT License](https://github.com/mattchew1010/FoxOrOnion/blob/master/LICENSE).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Acknowledgements
+
+- [Fox News](https://www.foxnews.com/)
+- [The Onion](https://www.theonion.com/)
+- [Create React App](https://create-react-app.dev/)
+- [Express](https://expressjs.com/)
