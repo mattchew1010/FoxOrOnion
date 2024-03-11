@@ -30,5 +30,3 @@ This project is licensed under the [MIT License](https://github.com/mattchew1010
 
 - [Fox News](https://www.foxnews.com/)
 - [The Onion](https://www.theonion.com/)
-- [Create React App](https://create-react-app.dev/)
-- [Express](https://expressjs.com/)
