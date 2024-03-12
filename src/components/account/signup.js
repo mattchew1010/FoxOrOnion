@@ -22,7 +22,7 @@ export default function Signup(submitSignupForm, guestLogin) {
         <div className="bg-secondary shadow w-full rounded-lg divide-y">
           <div className="px-4 py-3">
             <form onChange={validate} submit={submitSignupForm}>
-              <label className="font-semibold text-sm text-white pb-1 block">E-mail</label>
+                <label className="font-semibold text-sm text-white pb-1 block">E-mail</label>
                 <input id="email" type="email" className="bg-textbox border border-textbox-border rounded-lg px-3 py-1 mt-1 mb-5 text-base w-full outline-none ring-0 ring-white focus:ring-2" />
                 <label className="font-semibold text-sm text-white pb-1 block">Password</label>
                 <input id="password" type="password" className="bg-textbox border border-textbox-border rounded-lg px-3 py-1 mt-1 mb-0 text-base w-full outline-none ring-0 ring-white focus:ring-2" />
