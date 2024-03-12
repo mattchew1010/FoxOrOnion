@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uuid     String  @id
+  email    String? @unique
+  name     String? @unique
+  password String?
+  rounds   Round[]
+}
+
+model Round {
+  uuid      String   @id
+  news      News[]
+  satire    Satire[]
+  correct   Boolean
+  user      User     @relation(fields: [userId], references: [uuid])
+  userId    String
+  timestamp DateTime @default(now())
+}
+
+model News {
+  uuid  String @id
+  title String
+  url   String
+
+  timestamp DateTime @default(now())
+  rounds Round[]
+}
+
+model Satire {
+  uuid  String @id
+  title String
+  url   String
+
+  timestamp DateTime @default(now())
+  rounds Round[]
+}
