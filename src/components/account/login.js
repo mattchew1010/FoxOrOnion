@@ -2,8 +2,8 @@
 import {useState} from "react"
 import {useFormState} from "react-dom"
 
-export function Login({title, submit}) {
-   const [state, formAction] = useFormState(submit, null)
+export function Login({title, submit, initialFormState = null}) {
+   const [state, formAction] = useFormState(submit, initialFormState)
 
    const [valid, setValid] = useState(true)
    function validate(e) {
