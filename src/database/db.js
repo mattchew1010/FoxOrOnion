@@ -5,12 +5,17 @@ import {v4 as uuidv4} from "uuid";
 const prisma = new PrismaClient();
 //####USERS####
 export async function CreateUser(email, password, username) {
-  return prisma.user.create({
+  return prisma.session.create({
     data: {
-      email: email,
-      password: await bcrypt.hashSync(password, 10),
-      username: username,
       uuid: uuidv4(),
+      user: {
+        create: {
+          email: email,
+          password: await bcrypt.hashSync(password, 10),
+          username: username,
+          uuid: uuidv4(),
+        }
+      }
     },
   })
 }
