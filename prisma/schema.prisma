@@ -13,6 +13,7 @@ model User {
   name     String? @unique
   password String
   rounds   Round[]
+  sessions Session[]
 }
 
 model Round {
@@ -41,4 +42,11 @@ model Satire {
 
   timestamp DateTime @default(now())
   rounds Round[]
+}
+
+model Session {
+  uuid      String      @id
+  user      User     @relation(fields: [userId], references: [uuid])
+  userId    String
+  timestamp DateTime @default(now())
 }
