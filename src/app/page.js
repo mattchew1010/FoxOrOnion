@@ -26,7 +26,6 @@ export async function signupAction(formData) {
     var session = await CreateUser(email, password)
     
     cookies().set("session", session.uuid)
-    return redirect("/games")
   } catch (error) {
     console.log(error)
     return {
@@ -34,6 +33,7 @@ export async function signupAction(formData) {
       error: "Internal server error, Please try again later."
     }
   }
+  return redirect("/games")
 }
 
 export default async function Home() {
