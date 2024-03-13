@@ -3,6 +3,7 @@ import {Signup} from "@/components/account/signup.js"
 import { CreateUser } from "@/database/db.js"
 import {z} from "zod"
 import { redirect } from 'next/navigation'
+import {cookies} from "next/headers"
 
 const SignupFormSchema = z.object({
   email: z.string({invalid_type_error: "Invalid Email"}).email(),
@@ -21,9 +22,9 @@ export async function signupAction(formData) {
       error: validate.error.issues
     }
   }
-
+  var session = null
   try {
-    await CreateUser(email, password)
+    session = await CreateUser(email, password)
   } catch (error) {
     console.log(error)
     return {
@@ -31,13 +32,19 @@ export async function signupAction(formData) {
       error: "Internal server error, Please try again later."
     }
   }
-  return redirect("/games")//todo: cookies
+  cookies().set("session", session.uuid)
+  return redirect("/games")
 }
 
 export default async function Home() {
-  return (
-    <div>
-      <Signup submitSignupForm={signupAction}/>
-    </div>
-  )
+  if (cookies().get("session")) { //only check if cookie exists, does not have to be valid to redirect
+    redirect("/games") 
+  } else{
+    return (
+      <div>
+        <Signup submitSignupForm={signupAction}/>
+      </div>
+    )
+  }
+  
 }
