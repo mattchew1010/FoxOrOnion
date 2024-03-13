@@ -11,7 +11,7 @@ export async function CreateUser(email, password, username) {
       user: {
         create: {
           email: email,
-          password: await bcrypt.hashSync(password, 10),
+          password: bcrypt.hashSync(password, 10),
           username: username,
           uuid: uuidv4(),
         }
@@ -19,6 +19,32 @@ export async function CreateUser(email, password, username) {
     },
   })
 }
+
+export async function userAuth(email, password) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+  })
+  if (!user) {
+    throw "User not found"
+  }
+  if (user && bcrypt.compareSync(password, user.password)) {
+    return prisma.session.create({
+      data: {
+        uuid: uuidv4(),
+        user: {
+          connect: {
+            uuid: user.uuid,
+          }
+        }
+      },
+    })
+  } else {
+    throw "Invalid Password"
+  }
+}
+
 
 
 
