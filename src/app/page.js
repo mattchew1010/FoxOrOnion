@@ -35,14 +35,22 @@ export async function signupAction(formData) {
   }
   return redirect("/games")
 }
-
+export async function guestLogin(){
+  try{
+      const session = await CreateUser(null, "Guest_Password")
+      cookies().set("session", session.uuid)
+   }catch(err){
+      console.log(err)
+   }
+   return redirect("/games")
+}
 export default async function Home() {
   if (cookies().get("session")) { //only check if cookie exists, does not have to be valid to redirect
     redirect("/games") 
   } else{
     return (
       <div>
-        <Signup submitSignupForm={signupAction}/>
+        <Signup submitSignupForm={signupAction} submitGuestLogin={guestLogin}/>
       </div>
     )
   }

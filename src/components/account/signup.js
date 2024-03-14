@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 
-export function Signup({submitSignupForm}) {
+export function Signup({submitSignupForm, submitGuestLogin}) {
   const [valid, setValid] = useState(true)
 
   function validate(e) {
@@ -37,11 +37,9 @@ export function Signup({submitSignupForm}) {
                   <span className="flex-shrink mx-4 text-gray-400">Or</span>
                   <div className="flex-grow border-t border-gray-400"></div>
                </div>
-               <a href="/guestlogin">
-                  <button type="submit" className="transition duration-200 bg-textbox hover:bg-textbox-border rounded-lg w-full py-2 text-white">
-                    Continue as guest
-                  </button>
-               </a>
+                <button onClick={() => submitGuestLogin()} type="submit" className="transition duration-200 bg-textbox hover:bg-textbox-border rounded-lg w-full py-2 text-white">
+                  Continue as guest
+                </button>
           </div>
         </div>
       </div>
