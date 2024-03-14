@@ -1,6 +1,6 @@
 export function Game({name, description, disabled, link}) {
    return (
-      <div className="bg-secondary p-4 rounded-md shadow-md max-w-60 min-w-52 min-h-80">
+      <div className="bg-secondary p-4 rounded-md shadow-md max-w-60 min-w-1/3 min-h-1/2">
          <h1 className="text-2xl font-bold text-center mb-4">{name}</h1>
          <p className="text-wrap text-md">{description}</p>
          <a href={link}>

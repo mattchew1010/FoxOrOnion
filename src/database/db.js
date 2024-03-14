@@ -1,8 +1,11 @@
 "use server"
-import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
-import {v4 as uuidv4} from "uuid";
-const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client"
+import bcrypt from "bcryptjs"
+import {v4 as uuidv4} from "uuid"
+import prismaRandom from 'prisma-extension-random'
+const prisma = new PrismaClient().$extends(prismaRandom())
+
+
 //####USERS####
 export async function CreateUser(email, password, username) {
   return prisma.session.create({
@@ -18,6 +21,18 @@ export async function CreateUser(email, password, username) {
       }
     },
   })
+}
+
+export async function getUserFromSession(sessionid) {
+  const session = await prisma.session.findUnique({
+    where: {
+      uuid: sessionid,
+    },
+    include: {
+      user: true,
+    }
+  })
+  return session.user
 }
 
 export async function userAuth(email, password) {
@@ -67,4 +82,63 @@ export async function createArticle(url, title, realNews){
       },
     })
   }
+}
+
+
+//####GAMES####
+
+export async function getRandomRound(userId){
+  //todo: make sure random round has not been played by user
+  //todo: make news and satire in ONE table... idk what i was thinking
+  if (Math.random() > 0.5){
+    return prisma.news.findRandom({
+      select: {
+        uuid: true,
+        title: true,
+      }
+    })
+  }else {
+    return prisma.satire.findRandom({
+      select: {
+        uuid: true,
+        title: true,
+      }
+    })
+  }
+}
+
+export async function setUserRound(userId, article, choice){
+  //if choice is true, article is news
+  //todo: see getRandomRound todos will make this much cleaner
+  var data = {
+    data: {
+      uuid: uuidv4(),
+      user: {
+        connect: {
+          uuid: userId,
+        }
+      }
+    }
+  }
+  const news = await prisma.news.findUnique({
+    where: {
+      uuid: article,
+    }
+  })
+  if (news){
+    data.data.news = {
+      connect: {
+        uuid: article,
+      },
+    }
+    data.data.correct = choice
+  } else{
+    data.data.satire = {
+      connect: {
+        uuid: article,
+      },
+    }
+    data.data.correct = !choice
+  }
+  return prisma.round.create(data)
 }
