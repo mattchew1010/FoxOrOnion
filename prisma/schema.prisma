@@ -18,8 +18,10 @@ model User {
 
 model Round {
   uuid      String   @id
-  news      News[]
-  satire    Satire[]
+  news      News?   @relation(fields: [newsId], references: [uuid])
+  newsId    String?
+  satire    Satire? @relation(fields: [satireId], references: [uuid])
+  satireId  String?
   correct   Boolean
   user      User     @relation(fields: [userId], references: [uuid])
   userId    String
