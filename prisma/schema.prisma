@@ -13,12 +13,15 @@ model User {
   name     String? @unique
   password String
   rounds   Round[]
+  sessions Session[]
 }
 
 model Round {
   uuid      String   @id
-  news      News[]
-  satire    Satire[]
+  news      News?   @relation(fields: [newsId], references: [uuid])
+  newsId    String?
+  satire    Satire? @relation(fields: [satireId], references: [uuid])
+  satireId  String?
   correct   Boolean
   user      User     @relation(fields: [userId], references: [uuid])
   userId    String
@@ -41,4 +44,11 @@ model Satire {
 
   timestamp DateTime @default(now())
   rounds Round[]
+}
+
+model Session {
+  uuid      String      @id
+  user      User     @relation(fields: [userId], references: [uuid])
+  userId    String
+  timestamp DateTime @default(now())
 }
