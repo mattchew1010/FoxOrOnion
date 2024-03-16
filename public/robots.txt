@@ -1,5 +1,2 @@
-User-agent: Googlebot
-Disallow: /games/*
-
 User-agent: *
-Allow: /
+Disallow: /games/*
