@@ -29,7 +29,7 @@ export function Login({title, submit, initialFormState = null, submitGuestLogin}
                 <input className="bg-textbox border border-textbox-border rounded-lg px-3 py-1 mt-1 mb-5 text-base w-full outline-none ring-0 ring-white focus:ring-2" id="email" type="email" name="email"/>
                 <label className="font-semibold text-sm text-white pb-1 block">Password</label>
                 <input className="bg-textbox border border-textbox-border rounded-lg px-3 py-1 mt-1 mb-0 text-base w-full outline-none ring-0 ring-white focus:ring-2" id="password" type="password" name="password"/>
-                <button disabled={!valid} type="submit" className="disabled:bg-[#FF8A80] disabled:text-[#141414] disabled:hover:bg-red-500 mt-6 transition duration-200 bg-blue-500 hover:bg-blue-600 rounded-lg w-full py-2 text-white" >
+                <button data-umami-event="Login Request" disabled={!valid} type="submit" className="disabled:bg-[#FF8A80] disabled:text-[#141414] disabled:hover:bg-red-500 mt-6 transition duration-200 bg-blue-500 hover:bg-blue-600 rounded-lg w-full py-2 text-white" >
                   Login
                 </button>
                <label className="text-xs text-gray-400 pl-1">Need an account? <a href="/" className="text-blue-500 hover:text-blue-400">Sign up</a></label>
@@ -39,7 +39,7 @@ export function Login({title, submit, initialFormState = null, submitGuestLogin}
                   <span className="flex-shrink mx-4 text-gray-400">Or</span>
                   <div className="flex-grow border-t border-gray-400"></div>
                </div>
-               <button onClick={() => submitGuestLogin()} type="submit" className="transition duration-200 bg-textbox hover:bg-textbox-border rounded-lg w-full py-2 text-white">
+               <button data-umami-event="Guest login" onClick={() => submitGuestLogin()} type="submit" className="transition duration-200 bg-textbox hover:bg-textbox-border rounded-lg w-full py-2 text-white">
                   Continue as guest
                 </button>
           </div>
