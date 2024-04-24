@@ -2,7 +2,7 @@
 import {useState} from "react"
 import {useFormState} from "react-dom"
 
-export function Login({title, submit, initialFormState = null}) {
+export function Login({title, submit, initialFormState = null, submitGuestLogin}) {
    const [state, formAction] = useFormState(submit, initialFormState)
 
    const [valid, setValid] = useState(true)
@@ -39,11 +39,9 @@ export function Login({title, submit, initialFormState = null}) {
                   <span className="flex-shrink mx-4 text-gray-400">Or</span>
                   <div className="flex-grow border-t border-gray-400"></div>
                </div>
-               <a href="/guestlogin">
-                  <button type="submit" className="transition duration-200 bg-textbox hover:bg-textbox-border rounded-lg w-full py-2 text-white">
-                    Continue as guest
-                  </button>
-               </a>
+               <button onClick={() => submitGuestLogin()} type="submit" className="transition duration-200 bg-textbox hover:bg-textbox-border rounded-lg w-full py-2 text-white">
+                  Continue as guest
+                </button>
           </div>
         </div>
         <p className="text-center text-gray-400 text-xs pt-3">By continuing, you agree to our <a href="/user-agreement" className="text-blue-500 hover:text-blue-400">User Agreement</a> and <a href="/privacy" className="text-blue-500 hover:text-blue-400">Privacy Policy</a>.</p>

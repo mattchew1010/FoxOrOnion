@@ -27,9 +27,19 @@ export async function CheckCredentials(previousState, formData) {
    }
 }
 
+export async function guestLogin(){
+  try{
+      const session = await CreateUser(null, "Guest_Password")
+      cookies().set("session", session.uuid)
+   }catch(err){
+      console.log(err)
+   }
+   return redirect("/games")
+}
+
 export default async function LoginPage() {
    if (!cookies().get("session")) {
-      return (<Login title={"Please Login To Continue"} submit={CheckCredentials}/>)
+      return (<Login title={"Please Login To Continue"} submit={CheckCredentials} submitGuestLogin={guestLogin}/>)
    } else {
       return redirect("/games")
    }
