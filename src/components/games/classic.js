@@ -27,10 +27,10 @@ export function GameComponent({articleTitle, submit, articleID}){
          </div>
          
          <div className="flex justify-center gap-3">
-            <button onClick={() => handleButtonClick('real')} name="real" className="w-60 py-2 bg-blue-500 shadow rounded-lg">
+            <button data-umami-event="Game - Classic - Real News" onClick={() => handleButtonClick('real')} name="real" className="w-60 py-2 bg-blue-500 shadow rounded-lg">
                <h1 className="text-center text-2xl">Real News</h1>
             </button>
-            <button onClick={() => handleButtonClick('fake')} name="fake" className="w-60 py-2 bg-red-500 shadow rounded-lg">
+            <button data-umami-event="Game - Classic - Fake News" onClick={() => handleButtonClick('fake')} name="fake" className="w-60 py-2 bg-red-500 shadow rounded-lg">
                <h1 className="text-center text text-2xl">Fake News</h1>
             </button>
          </div>

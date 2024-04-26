@@ -1,5 +1,10 @@
 import {Game} from "@components/nav/games.js"
 
+export const metadata = {
+   title: 'News or Satire? | Games',
+   description: 'Test your ability to distinguish between real news and satire in this fun game. Choose whether a given headline is from a legitimate news source or a satirical one. Challenge your friends and see who can get the highest score!',
+}
+
 export default function Games() {
    //todo: this page is ugly
    return (
